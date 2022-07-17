@@ -111,14 +111,14 @@ bool isDesiredPointReached(
 	const geometry_msgs::Pose& dp_pose
 )
 {
-    double xy_goal_tolerance = 0.25; // set tolerance as required
+    double xy_goal_tolerance = 0.40; // set tolerance as required
     double goal_x = dp_pose.position.x; // goal_pose.pose.position.x;
     double goal_y = dp_pose.position.y; // goal_pose.pose.position.y;
 
-    ROS_INFO("Dist=%f curr_x=%f curr_y=%f goal_x=%f goal_y=%f",
-	 pose2XYdistance(global_pose, goal_x, goal_y),
-	 global_pose.pose.position.x, global_pose.pose.position.y,
-	 goal_x, goal_y);
+    //ROS_INFO("Dist=%f curr_x=%f curr_y=%f goal_x=%f goal_y=%f",
+	// pose2XYdistance(global_pose, goal_x, goal_y),
+	// global_pose.pose.position.x, global_pose.pose.position.y,
+	// goal_x, goal_y);
     //  check to see if we've reached the waypoint position
     if (pose2XYdistance(global_pose, goal_x, goal_y) <= xy_goal_tolerance) {
 	return true;
@@ -197,8 +197,8 @@ int main( int argc, char** argv )
   	// update global pose header
   	current_pose.header.stamp = ros::Time::now();
   	// update odometry
-  	current_pose.pose.position.x = odomSub.getOdomCoords().first;
-  	current_pose.pose.position.y = odomSub.getOdomCoords().second;
+  	current_pose.pose.position.y = -odomSub.getOdomCoords().first;
+  	current_pose.pose.position.x = odomSub.getOdomCoords().second;
 
   	switch (task)
     	{
@@ -221,7 +221,7 @@ int main( int argc, char** argv )
       		break;
     
     	case 2:
-      		ROS_INFO_ONCE("At pick up place");
+      		ROS_INFO_ONCE("At pick up place, Sleep for 5 sec");
       		// Wait 5 seconds to simulate a pickup
       		// construct a ros::Duration object, then call its sleep() method
       		ros::Duration(5, 0).sleep();
@@ -244,7 +244,7 @@ int main( int argc, char** argv )
       		break;
     
     	case 4:
-      		ROS_INFO_ONCE("At drop off zone");
+      		ROS_INFO_ONCE("At drop off zone, drop marker");
       		// build a Rviz marker message and publish it
       		rvizMarkerPub.publish(marker_at_dropoff, "ADD");
       		break;

@@ -1,0 +1,17 @@
+- Gmapping package:
+
+    The gmapping package provides laser-based SLAM (Simultaneous Localization and Mapping),
+    as a ROS node called slam_gmapping.
+    slam_gmapping, helps creating a 2-D occupancy grid map (like a building floorplan)
+    from laser and pose data collected by a mobile robot.
+
+- Navigation
+
+    A 2D navigation stack that takes in information from odometry, 
+    sensor streams, and a goal pose and outputs safe velocity commands that are sent to a mobile base.
+
+- AMCL
+
+    amcl is a probabilistic localization system for a robot moving in 2D. 
+    It implements the adaptive (or KLD-sampling) Monte Carlo localization approach,
+    which uses a particle filter to track the pose of a robot against a known map.
