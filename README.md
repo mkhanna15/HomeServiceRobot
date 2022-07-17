@@ -7,11 +7,12 @@ This project simulates an autonomous robot that picks up an object and drops it 
 * [slam_gmapping](https://github.com/ros-perception/slam_gmapping)
   * This package creates a map of the environment using laser-based SLAM.
 * [turtlebot](https://github.com/turtlebot/turtlebot)
-  * Used turtlebot_teleop  to manually drive the robot from the keyboard in some the scripts file.
+  * Used turtlebot_teleop  to manually drive the robot from the keyboard in some scripts file.
 * [turtlebot_interactions](https://github.com/turtlebot/turtlebot_interactions)
    * This package is used to launch RViz which allows the user to visualize SLAM, particle filters and send nav goals. Here RViz config files can be saved which will launch the map, robot model, markers etc.
 * [turtlebot_simulator](https://github.com/turtlebot/turtlebot_simulator)
-  * This package contains the turtlebot_gazebo file which allows you to launch the turtlebot world  with the turtlebot(turtlebot_world.launch) and launches the amcl algorithm (amcl_demo.launch). The robot is able to localize itself using the amcl package. This launch file is modified to specify the initial robot pose. The orientation is changed to what is seen by Rviz. Here is the change:```
+  * This package contains the turtlebot_gazebo file which allows you to launch the turtlebot world  with the turtlebot(turtlebot_world.launch) and launches the amcl algorithm (amcl_demo.launch). The robot is able to localize itself using the amcl package. This launch file is modified to specify the initial robot pose. The orientation is changed to what is seen by Rviz. Here is the change:
+```
 <arg name="initial_pose_x" default="0.0"/>
 <arg name="initial_pose_y" default="0.0"/>
 <arg name="initial_pose_a" default="-1.57"/>
